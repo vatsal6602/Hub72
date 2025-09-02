@@ -1,7 +1,7 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger, ScrollSmoother } from "gsap/all";
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 
 const Agence = () => {
 
@@ -40,6 +40,13 @@ const Agence = () => {
     { name: 'michele riendeau', role: 'Sales Representative', url: 'https://k72.ca/uploads/teamMembers/Michele_480X640-480x640.jpg' },
     { name: 'beatrice roussin', role: 'Strategist', url: 'https://k72.ca/uploads/teamMembers/MEGGIE_480X640_2-480x640.jpg' },
   ]
+
+  useEffect(() => {
+  imageArray.forEach(img => {
+    const preload = new Image();
+    preload.src = img.url;
+  });
+}, []);
 
   useGSAP(() => {
   if (window.innerWidth < 1024) {
@@ -110,7 +117,7 @@ const Agence = () => {
     <div ref={page} className='parent pt-[80px]'>
       <div id='page1' className='py-1 '>
         <div ref={imageDivRef} className='lg:relative fixed overflow-hidden lg:h-[20vw] h-[27vw] lg:rounded-3xl rounded-xl lg:w-[15vw] w-[20vw] lg:top-[10vw] top-[30vw] left-[30vw]'>
-          <img ref={imageRef} className='h-full object-cover w-full' src="https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg" alt="" />
+          <img ref={imageRef} className='h-full object-cover w-full' src="https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg" alt="" loading='lazy'/>
         </div>
         <div className='relative font-[font2]'>
           <div className='lg:mt-0 mt-[18vh]'>
@@ -128,7 +135,7 @@ const Agence = () => {
             <div key={img.name} className="relative flex sm:items-start items-center justify-between border-t-1 border-white hover-highlight">
               <div className="p-2 lg:text-1px text-[12px]">{img.role}</div>
               <div className="lg:text-[40px] text-[20px] p-2 uppercase">{img.name}</div>
-              <img src={img.url} alt={img.name} className='absolute hidden sm:block -top-28 left-[20vw] w-32 h-40 object-cover shadow-xl rounded-md z-10 bg-black' />
+              <img src={img.url} alt={img.name} loading="lazy" className='absolute hidden sm:block -top-28 left-[20vw] w-32 h-40 object-cover shadow-xl rounded-md z-10 bg-black' />
             </div>
           ))}
         </div>

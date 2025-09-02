@@ -10,47 +10,54 @@ body.no-scroll {
   touch-action: none !important;
 }
 
-
 @font-face {
   font-family: font3;
   src: url(/fonts/BroncoPersonalUse.ttf);
 }
 
 @font-face {
-    font-family: font1;
-    src: url(/fonts/Lausanne-300.woff2);
+  font-family: font1;
+  src: url(/fonts/Lausanne-300.woff2);
 }
+
 @font-face {
-    font-family: font2;
-    src: url(/fonts/Lausanne-500.woff2);
+  font-family: font2;
+  src: url(/fonts/Lausanne-500.woff2);
 }
 
-.moveX{
-    animation-name: moveAnimation;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-.moveLink {
-    opacity: 0;
-}
-
-.link:hover .moveLink {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+.moveX {
+  display: flex;
+  flex-shrink: 0;
+  white-space: nowrap;
+  animation: moveAnimation 20s linear infinite;
+  min-width: 200%;        
 }
 
 @keyframes moveAnimation {
-    from{
-        transform: translateX(0);
-    }
-    to{
-        transform: translateX(-100%);
-    }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-/* index.css */
+.moveLink {
+  opacity: 0;
+  overflow: hidden;      
+  width: 100%;            
+  height: 100%;           
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.link:hover .moveLink {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* hover highlight effect (unchanged) */
 .hover-highlight {
   position: relative;
   display: flex;
