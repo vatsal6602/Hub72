@@ -107,7 +107,7 @@ const Navbar = () => {
                     onClick={() => setNavOpen(true)}
                     onMouseEnter={() => navGreenRef3.current.style.height = '100%'}
                     onMouseLeave={() => navGreenRef3.current.style.height = '0%'}
-                    className="tab group lg:h-13 h-10 cursor-pointer bg-black relative lg:w-[16vw] w-44 
+                    className="tab group h-20 cursor-pointer bg-black relative lg:w-[16vw] w-44 
              overflow-hidden transition-all duration-700 ease-in-out"
                 >
                     <div ref={navGreenRef3} className="bg-[#D3FD50] transition-all absolute top-0 h-0 w-full z-0"></div>
@@ -115,11 +115,9 @@ const Navbar = () => {
                         <div className="lg:w-14 w-10 h-0.5 bg-white group-hover:bg-black"></div>
                         <div className="lg:w-8 w-6 h-0.5 bg-white group-hover:bg-black"></div>
                     </div>
-                    {location.pathname !== '/' && (
-                        <div className="absolute bottom-1 left-3 text-white text-xl group-hover:text-black z-10 hidden lg:block uppercase">
-                            Menu
-                        </div>
-                    )}
+                    <div className="absolute bottom-1 left-2 text-white text-xl group-hover:text-black z-10 block uppercase">
+                        Menu
+                    </div>
                 </div>
 
             </div>
