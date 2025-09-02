@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+html.no-scroll,
+body.no-scroll {
+  overflow: hidden !important;
+  height: 100% !important;
+  width: 100% !important;
+  position: fixed !important;
+  overscroll-behavior: none !important;
+  touch-action: none !important;
+}
+
+
+@font-face {
+  font-family: font3;
+  src: url(/fonts/BroncoPersonalUse.ttf);
+}
+
+@font-face {
+    font-family: font1;
+    src: url(/fonts/Lausanne-300.woff2);
+}
+@font-face {
+    font-family: font2;
+    src: url(/fonts/Lausanne-500.woff2);
+}
+
+.moveX{
+    animation-name: moveAnimation;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.moveLink {
+    opacity: 0;
+}
+
+.link:hover .moveLink {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes moveAnimation {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+/* index.css */
+.hover-highlight {
+  position: relative;
+  display: flex;
+  width: 100%;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.hover-highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background-color: #D3FD50;
+  transition: height 0.3s ease;
+  z-index: -1;
+}
+
+.hover-highlight:hover {
+  color: black;
+}
+
+.hover-highlight:hover::before {
+  height: 100%;
+}
+
+.hover-highlight img {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translate(-50%, -10px);
+}
+
+.hover-highlight:hover img {
+  opacity: 1;
+  transform: translate(-50%, -20px); /* little float effect */
+}
